@@ -17,35 +17,89 @@ const teams = [
     {    id: 16,   name: "Kozármisleny",    points: 7,    gFor: 6,    gAg: 14,    wins: 1,  hAN: "Lékai Soma", hA: 6.99,   tScN: "Babinszky Bence/Kocsis Dominik",  tScG: 2, manager: "Pinezits Máté"},
 ]
 
-function fullTl()
+function fullTl() // fgv 1
 {
     out=""
     t=""
-    for (let i = 0; i < teams.length; i++) {
-        if (teams[i].id == 1 || teams[i].id == 2) {
+    for (let i = 0; i < teams.length; i++) { // ciklus
+        if (teams[i].id == 1 || teams[i].id == 2) { // elagazas
            t=`<tr>
-            <td class="promotion">${teams[i].id}.</td>
+            <td class="promotion" style="text-align: center;">${teams[i].id}.</td>
             <td>${teams[i].name}</td>
-            <td>${teams[i].points} pont</td>
+            <td style="text-align: center;">${teams[i].points} pont</td>
             </tr>` 
         }
         else if (teams[i].id == 15 || teams[i].id == 16) {
            t=`<tr>
-            <td class="relegation">${teams[i].id}.</td>
+            <td class="relegation" style="text-align: center;">${teams[i].id}.</td>
             <td>${teams[i].name}</td>
-            <td>${teams[i].points} pont</td>
+            <td style="text-align: center;">${teams[i].points} pont</td>
             </tr>` 
         }
         else
         {
         t=`<tr>
-        <td>${teams[i].id}.</td>
+        <td style="text-align: center;">${teams[i].id}.</td>
         <td>${teams[i].name}</td>
-        <td>${teams[i].points} pont</td>
+        <td style="text-align: center;">${teams[i].points} pont</td>
         </tr>`
         }
        out+=t
 }
-document.getElementById("cont").innerHTML+=out
+document.getElementById("tb").innerHTML+=out
 }
+
+// ------------------------------------------------------------------------------------------
+
+const highestAvg = []
+
+function highAvgList() // fgv 2
+{
+    for (let i = 0; i < teams.length; i++) {
+        highestAvg.push(
+            {
+                hA: teams[i].hA,
+                hAN: teams[i].hAN,
+                hATeam: teams[i].name
+            }
+        )
+        highestAvg.sort((a, b) => b.hA - a.hA); // mr gpt - prompt: sorting of players via highest average rating
+    }
+
+    html = "<h2>Top Játékosok</h2><ol>"; //  mr gpt - prompt: display h2 title and ol inside function
+
+    for (let i = 0; i < highestAvg.length; i++) {
+        html+="<li>"+highestAvg[i].hAN+" ("+highestAvg[i].hA+")"+"<br>"+highestAvg[i].hATeam+"</li>"
+    }
+    html+="</ol>";
+    document.getElementById("valtC").innerHTML=html;
+}
+
+// ------------------------------------------------------------------------------------------
+
+const managers = []
+
+function managersList() // fgv 3
+{
+    for (let i = 0; i < teams.length; i++) {
+        managers.push(
+            {
+                manager: teams[i].manager,
+                PpM: teams[i].points / 9.0, // meccsenkenti pontatlag: pont / fordulo (jelenleg 9)
+                managerT: teams[i].name
+            }
+        )
+    }
+
+    html = "<h2>Vezetőedzők</h2><ol>"; //
+
+    for (let i = 0; i < managers.length; i++) {
+        html+="<li>"+managers[i].manager+" ("+managers[i].PpM+")"+"<br>"+managers[i].managerT+"</li>"
+    }
+    html+="</ol>";
+    document.getElementById("valtC").innerHTML=html;
+}
+
+// ------------------------------------------------------------------------------------------
+
 
