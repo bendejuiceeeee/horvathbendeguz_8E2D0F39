@@ -35,13 +35,17 @@ h1{
 /*-----------------------------------------------*/
 
 #tb {
-  border: 2px solid midnightblue;
+  border: 2px solid;
   border-radius: 20px;
   background-color: rgb(70, 70, 70);
   color: white;
   overflow: hidden;
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+#tb a{
+    color: white;
 }
 
 #t h2{
@@ -67,7 +71,6 @@ h1{
   justify-content: center;
   margin: 0;
   padding: 0;
-  
 }
 
 /*-----------------------------------------------*/
@@ -80,6 +83,11 @@ h1{
 #round10 table{
     background-color: rgb(70, 70, 70);
     color: white;
+    overflow: hidden;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 2.5px solid;
+    border-radius: 20px;
 }
 
 #info{
@@ -115,3 +123,14 @@ h1{
 }
 
 /*-----------------------------------------------*/
+
+#tStats{
+    border: 2.5px solid midnightblue;
+    border-radius: 20px;
+    background-color: rgb(70, 70, 70);
+    color: white;
+}
+
+#tStats h2{
+    text-align: center;
+}

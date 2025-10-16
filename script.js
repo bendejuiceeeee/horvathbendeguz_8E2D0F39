@@ -25,14 +25,14 @@ function fullTl() // fgv 1
         if (teams[i].id == 1 || teams[i].id == 2) { // elagazas
            t=`<tr>
             <td class="promotion" style="text-align: center;">${teams[i].id}.</td>
-            <td>${teams[i].name}</a></td>
+            <td><a href="#" onclick="swTeamSt(${teams[i].id})">${teams[i].name}</a></td>
             <td style="text-align: center;">${teams[i].points} pont</td>
             </tr>` 
         }
         else if (teams[i].id == 15 || teams[i].id == 16) {
            t=`<tr>
             <td class="relegation" style="text-align: center;">${teams[i].id}.</td>
-            <td>${teams[i].name}</td>
+            <td><a href="#" onclick="swTeamSt(${teams[i].id})">${teams[i].name}</a></td>
             <td style="text-align: center;">${teams[i].points} pont</td>
             </tr>` 
         }
@@ -40,7 +40,7 @@ function fullTl() // fgv 1
         {
         t=`<tr>
         <td style="text-align: center;">${teams[i].id}.</td>
-        <td>${teams[i].name}</td>
+        <td><a href="#" onclick="swTeamSt(${teams[i].id})">${teams[i].name}</a></td>
         <td style="text-align: center;">${teams[i].points} pont</td>
         </tr>`
         }
@@ -114,7 +114,7 @@ function topScorersList() // fgv 4
         topScorers.sort((a, b) => b.goals - a.goals)
     }
 
-    html = "<h3>Góllövő lista</h3><ol>"; //
+    html = "<h3>Góllövő lista <br> (Házi gólkirályok)</h3><ol>"; //
 
     for (let i = 0; i < topScorers.length; i++) {
         html+="<li>"+topScorers[i].player+" ("+topScorers[i].goals+" gól)"+"<br>"+topScorers[i].playerT+"</li>"
@@ -123,4 +123,26 @@ function topScorersList() // fgv 4
     document.getElementById("valtC").innerHTML=html;
 }
 
+// ------------------------------------------------------------------------------------------
+
+function swTeamSt(id) { // mr gpt - prompt: display teams stats function, when i click on them
+  const team = teams.find(t => t.id == id);
+  if (!team) return;
+
+  let html = `
+    <h2>Statisztika</h2>
+    <h3>${team.name}</h3>
+    <ul>
+        <li>Helyezés: ${team.id}.</li>
+        <li>Pontok: ${team.points} pont</li>
+        <li>Győzelmek: ${team.wins}</li>
+        <li>Lőtt gólok száma: ${team.gFor}</li>
+        <li>Kapott gólok száma: ${team.gAg}</li>
+        <li>Gólkülönbség: ${(team.gFor)-(team.gAg)}</li>
+        <li>Legjobb játékos: ${team.hAN} (${team.hA})</li>
+        <li>Házi gólkirály: ${team.tScN} - ${team.tScG} gól</li>
+    </ul>
+    `;
+  document.getElementById("tStats").innerHTML = html;
+}
 
