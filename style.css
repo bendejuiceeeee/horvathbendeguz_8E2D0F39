@@ -18,10 +18,6 @@ a:hover{
     color: #3f3342;
 }
 
-a:visited{
-    color: #3f3342;
-}
-
 #logo{
     width: 64px;
     height: 64px;
@@ -36,15 +32,21 @@ h1{
     margin-left: 15px;
 }
 
-#t table{
-    border: 2.5px solid midnightblue;
-    border-radius: 10px;
-    background-color: rgb(70, 70, 70);
-    color: white;
+/*-----------------------------------------------*/
+
+#tb {
+  border: 2px solid midnightblue;
+  border-radius: 20px;
+  background-color: rgb(70, 70, 70);
+  color: white;
+  overflow: hidden;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 #t h2{
     text-align: center;
+    font-weight: bold
 }
 
 .promotion
@@ -68,8 +70,36 @@ h1{
   
 }
 
+/*-----------------------------------------------*/
+
+#round10 h3{
+    text-align: center;
+    font-weight: bold;
+}
+
+#round10 table{
+    background-color: rgb(70, 70, 70);
+    color: white;
+}
+
+#info{
+    background-color: red;
+    color: white;
+    padding: 3px;
+    position: relative;
+    top: 10px;
+    left: 5px;
+}
+
+#dateM4{
+    color: red;
+}
+
+/*-----------------------------------------------*/
+
 #valtC ol{
-    border: 1px solid black;
+    border: 2.5px solid midnightblue;
+    border-radius: 20px;
     background-color: rgb(70, 70, 70);
     color: white;
 }
@@ -83,3 +113,5 @@ h1{
     text-align: center;
     font-weight: bold;
 }
+
+/*-----------------------------------------------*/

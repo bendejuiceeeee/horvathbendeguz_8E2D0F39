@@ -123,3 +123,4 @@ function topScorersList() // fgv 4
     document.getElementById("valtC").innerHTML=html;
 }
 
+
