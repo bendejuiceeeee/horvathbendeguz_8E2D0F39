@@ -25,7 +25,7 @@ function fullTl() // fgv 1
         if (teams[i].id == 1 || teams[i].id == 2) { // elagazas
            t=`<tr>
             <td class="promotion" style="text-align: center;">${teams[i].id}.</td>
-            <td>${teams[i].name}</td>
+            <td>${teams[i].name}</a></td>
             <td style="text-align: center;">${teams[i].points} pont</td>
             </tr>` 
         }
@@ -51,10 +51,9 @@ document.getElementById("tb").innerHTML+=out
 
 // ------------------------------------------------------------------------------------------
 
-const highestAvg = []
-
 function highAvgList() // fgv 2
 {
+    const highestAvg = []
     for (let i = 0; i < teams.length; i++) {
         highestAvg.push(
             {
@@ -66,7 +65,7 @@ function highAvgList() // fgv 2
         highestAvg.sort((a, b) => b.hA - a.hA); // mr gpt - prompt: sorting of players via highest average rating
     }
 
-    html = "<h2>Top Játékosok</h2><ol>"; //  mr gpt - prompt: display h2 title and ol inside function
+    html = "<h3>Top Játékosok</h3><ol>"; //  mr gpt - prompt: display h3 title and ol inside function
 
     for (let i = 0; i < highestAvg.length; i++) {
         html+="<li>"+highestAvg[i].hAN+" ("+highestAvg[i].hA+")"+"<br>"+highestAvg[i].hATeam+"</li>"
@@ -77,10 +76,9 @@ function highAvgList() // fgv 2
 
 // ------------------------------------------------------------------------------------------
 
-const managers = []
-
 function managersList() // fgv 3
 {
+    const managers = []
     for (let i = 0; i < teams.length; i++) {
         managers.push(
             {
@@ -91,10 +89,10 @@ function managersList() // fgv 3
         )
     }
 
-    html = "<h2>Vezetőedzők</h2><ol>"; //
+    html = "<h3>Vezetőedzők</h3><ol>"; //
 
     for (let i = 0; i < managers.length; i++) {
-        html+="<li>"+managers[i].manager+" ("+managers[i].PpM+")"+"<br>"+managers[i].managerT+"</li>"
+        html+="<li>"+managers[i].manager+" ("+managers[i].PpM.toFixed(2)+" p/m)"+"<br>"+managers[i].managerT+"</li>"
     }
     html+="</ol>";
     document.getElementById("valtC").innerHTML=html;
@@ -102,4 +100,26 @@ function managersList() // fgv 3
 
 // ------------------------------------------------------------------------------------------
 
+function topScorersList() // fgv 4
+{
+    const topScorers = []
+    for (let i = 0; i < teams.length; i++) {
+        topScorers.push(
+            {
+                player: teams[i].tScN,
+                goals: teams[i].tScG,
+                playerT: teams[i].name
+            }
+        )
+        topScorers.sort((a, b) => b.goals - a.goals)
+    }
+
+    html = "<h3>Góllövő lista</h3><ol>"; //
+
+    for (let i = 0; i < topScorers.length; i++) {
+        html+="<li>"+topScorers[i].player+" ("+topScorers[i].goals+" gól)"+"<br>"+topScorers[i].playerT+"</li>"
+    }
+    html+="</ol>";
+    document.getElementById("valtC").innerHTML=html;
+}
 
