@@ -139,6 +139,7 @@ function swTeamSt(id) { // mr gpt - prompt: display teams stats function, when i
         <li>Lőtt gólok száma: ${team.gFor}</li>
         <li>Kapott gólok száma: ${team.gAg}</li>
         <li>Gólkülönbség: ${(team.gFor)-(team.gAg)}</li>
+        <li>Vezetőedző: ${team.manager}</li>
         <li>Legjobb játékos: ${team.hAN} (${team.hA})</li>
         <li>Házi gólkirály: ${team.tScN} - ${team.tScG} gól</li>
     </ul>
