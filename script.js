@@ -62,13 +62,18 @@ function highAvgList() // fgv 2
                 hATeam: teams[i].name
             }
         )
-        highestAvg.sort((a, b) => b.hA - a.hA); // mr gpt - prompt: sorting of players via highest average rating
+        highestAvg.sort((a, b) => b.hA - a.hA);
     }
 
     html = "<h3>Top Játékosok</h3><ol>"; //  mr gpt - prompt: display h3 title and ol inside function
 
     for (let i = 0; i < highestAvg.length; i++) {
-        html+="<li>"+highestAvg[i].hAN+" ("+highestAvg[i].hA+")"+"<br>"+highestAvg[i].hATeam+"</li>"
+        if (i == 0) {
+            html +="<li><a target='_blank' href='hA.html'>"+highestAvg[i].hAN +"("+highestAvg[i].hA+")<br>"+highestAvg[i].hATeam +"</a></li>";
+        }
+        else{
+            html+="<li>"+highestAvg[i].hAN+" ("+highestAvg[i].hA+")"+"<br>"+highestAvg[i].hATeam+"</li>"
+        }
     }
     html+="</ol>";
     document.getElementById("valtC").innerHTML=html;
@@ -117,7 +122,12 @@ function topScorersList() // fgv 4
     html = "<h3>Góllövő lista <br> (Házi gólkirályok)</h3><ol>"; //
 
     for (let i = 0; i < topScorers.length; i++) {
-        html+="<li>"+topScorers[i].player+" ("+topScorers[i].goals+" gól)"+"<br>"+topScorers[i].playerT+"</li>"
+        if (i == 0) {
+            html +="<li><a target='_blank' href='tSc.html'>"+topScorers[i].player+" ("+topScorers[i].goals+" gól)"+"<br>"+topScorers[i].playerT+"</a></li>";
+        }
+        else{
+            html+="<li>"+topScorers[i].player+" ("+topScorers[i].goals+" gól)"+"<br>"+topScorers[i].playerT+"</li>"
+        }
     }
     html+="</ol>";
     document.getElementById("valtC").innerHTML=html;
@@ -125,7 +135,7 @@ function topScorersList() // fgv 4
 
 // ------------------------------------------------------------------------------------------
 
-function swTeamSt(id) { // mr gpt - prompt: display teams stats function, when i click on them
+function swTeamSt(id) { 
   const team = teams.find(t => t.id == id);
   if (!team) return;
 
